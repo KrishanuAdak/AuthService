@@ -26,7 +26,7 @@ public class JwtUtil {
 				.setClaims(claims)
 				.setSubject(auth.getEmail())
 				.setIssuedAt(new Date())
-				.setExpiration(new Date(System.currentTimeMillis()+1000*60*60*30))
+				.setExpiration(new Date(System.currentTimeMillis()+1000*60*60*10))
 				.signWith(getSigningKey())
 				.compact();
 		

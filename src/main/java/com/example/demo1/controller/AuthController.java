@@ -1,6 +1,7 @@
 package com.example.demo1.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo1.model.AuthDB;
 import com.example.demo1.service.AuthService;
@@ -22,6 +23,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class AuthController {
 	@Autowired
 	private AuthService service;
+	
+	@Value("${server.port}")
+	private String port;
+	
+	
+	@GetMapping("/port")
+	public String getPort() {
+//		return "Pir";
+		System.out.println("Port -- "+port);
+		return "Port running on "+port;
+	}
 	
 	@PostMapping("/register")
 	public ResponseEntity<?> saveDetails(@RequestBody AuthDB auth) {
